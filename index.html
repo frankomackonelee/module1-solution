@@ -14,20 +14,23 @@
 <body ng-app="LunchCheck">
    <div class="container" ng-controller="MyFirstController">
      <h1>Lunch Checker</h1>
-
-         <div class="form-group">
-             <input id="lunch-menu" type="text" ng-model="textInput"
-             placeholder="{{ placeholder }}"
-             class="form-control">
-         </div>
+        <div class="row">
+           <div class="form-group col-xs-12 col-sm-9">
+               <input id="lunch-menu" type="text"
+                 ng-model="textInput"
+                 ng-keyup="clearMessage()"
+                 placeholder="{{ placeholder }}"
+                 class="form-control">
+           </div>
+           <div class="text-{{ mistakeStatus }} col-xs-12 col-sm-3">
+             empty items (eg ", ,") are not counted as food items
+           </div>
+       </div>
          <div class="form-group">
              <button class="btn btn-default" ng-click="checkLunch()">Check If Too Much</button>
          </div>
          <div class="form-group message">
            {{ outputMessage }}
-         </div>
-         <div>
-           I have input {{ textInput }}
          </div>
    </div>
 
