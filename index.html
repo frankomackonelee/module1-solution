@@ -20,6 +20,7 @@
                  ng-model="textInput"
                  ng-keyup="clearMessage()"
                  placeholder="{{ placeholder }}"
+                 style="border: solid {{ messageColor }}"
                  class="form-control">
            </div>
            <div class="text-{{ mistakeStatus }} col-xs-12 col-sm-3">
@@ -29,7 +30,7 @@
          <div class="form-group">
              <button class="btn btn-default" ng-click="checkLunch()">Check If Too Much</button>
          </div>
-         <div class="form-group message" style="color:{{ messageColor }}; border: solid {{ messageColor }}">
+         <div class="form-group message" style="color:{{ messageColor }};">
            {{ outputMessage }}
          </div>
    </div>
