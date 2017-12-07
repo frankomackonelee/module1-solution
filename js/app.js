@@ -3,15 +3,21 @@
 
 angular.module('LunchCheck', [])
 
-.controller('MyFirstController', function($scope){
+.controller('MyFirstController', LCController);
+
+LCController.$inject = ['$scope']
+
+function LCController($scope){
   var lastValue = "";
   $scope.textInput = "";
   $scope.placeholder = "list comma separated dishes you usually have for lunch"
   $scope.outputMessage = "";
-  $scope.mistakeStatus = "muted"
+  $scope.mistakeStatus = "muted";
+  $scope.messageColor = "white";
   $scope.clearMessage = function(){
     if($scope.textInput != lastValue){
         $scope.outputMessage = "";
+        $scope.messageColor = "white"
     }
   }
 
@@ -21,6 +27,8 @@ angular.module('LunchCheck', [])
     if($scope.textInput == ""){
 
       $scope.outputMessage = "Please enter data first";
+
+      $scope.messageColor = "red";
 
     }else{
       var count = 0;
@@ -39,11 +47,13 @@ angular.module('LunchCheck', [])
         $scope.outputMessage = "Too Much!";
       }
 
+      $scope.messageColor = "green";
+
     }
 
   }
 
-});
+}
 
 
 })();
